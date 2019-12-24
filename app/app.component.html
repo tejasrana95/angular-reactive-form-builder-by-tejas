@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-header">Dynamic Forms</div>
     <div class="card-body">
-      <dynamic-form-builder [fields]="getFields()"></dynamic-form-builder>
+      <dynamic-form-builder [fields]="getFields()" (onSubmit)="onSubmit($event)" (onChange)="onChange($event)"></dynamic-form-builder>
     </div>
   </div>
 </div>

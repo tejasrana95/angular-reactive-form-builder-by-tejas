@@ -86,7 +86,6 @@ export class AppComponent {
 
   onUpload(e) {
     console.log(e);
-
   }
 
   getFields() {

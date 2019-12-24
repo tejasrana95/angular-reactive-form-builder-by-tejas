@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -19,10 +19,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     </form>
   `,
 })
-export class DynamicFormBuilderComponent implements OnInit {
+export class DynamicFormBuilderComponent implements OnInit, OnDestroy {
   @Output() onSubmit = new EventEmitter();
+  @Output() onChange = new EventEmitter();
   @Input() fields: any[] = [];
   form: FormGroup;
+  unsubcribe: any;
   constructor() { }
 
   ngOnInit() {
@@ -39,5 +41,18 @@ export class DynamicFormBuilderComponent implements OnInit {
       }
     }
     this.form = new FormGroup(fieldsCtrls);
+
+     this.unsubcribe = this.form.valueChanges.subscribe((update) => {
+      this.formChange(update);
+      this.fields = JSON.parse(update.fields);
+    });
+  }
+
+  formChange(value){
+    this.onChange.emit(value);
+  }
+
+  ngOnDestroy(){
+    this.unsubcribe.unsubcribe();
   }
 }
