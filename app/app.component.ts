@@ -45,7 +45,7 @@ export class AppComponent {
       type: 'dropdown',
       name: 'country',
       label: 'Country',
-      value: 'in',
+      value: '',
       required: true,
       options: [
         { key: 'in', label: 'India' },
@@ -56,7 +56,7 @@ export class AppComponent {
       type: 'radio',
       name: 'gender',
       label: 'Gender',
-      value: 'in',
+      value: '',
       required: true,
       options: [
         { key: 'm', label: 'Male' },
@@ -86,9 +86,6 @@ export class AppComponent {
     console.log(e);
   }
 
-  getFields() {
-    return this.fields;
-  }
 
   onChange(value){
     this.formOnChangeValue = value;
