@@ -53,8 +53,8 @@ export class AppComponent {
     },
     {
       type: 'radio',
-      name: 'country',
-      label: 'Country',
+      name: 'gender',
+      label: 'Gender',
       value: 'in',
       required: true,
       options: [
