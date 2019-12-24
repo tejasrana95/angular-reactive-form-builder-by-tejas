@@ -12,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
       <div class="form-group row">
         <div class="col-md-3"></div>
         <div class="col-md-9">
-          <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Save</button>
           <strong >Saved all values</strong>
         </div>
       </div>
@@ -44,7 +44,6 @@ export class DynamicFormBuilderComponent implements OnInit, OnDestroy {
 
      this.unsubcribe = this.form.valueChanges.subscribe((update) => {
       this.formChange(update);
-      this.fields = JSON.parse(update.fields);
     });
   }
 

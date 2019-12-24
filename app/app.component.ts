@@ -9,7 +9,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AppComponent {
   public form: FormGroup;
   unsubcribe: any
-
+  formValue: any[];
+  formOnChangeValue: any[];
   public fields: any[] = [
     {
       type: 'text',
@@ -78,10 +79,7 @@ export class AppComponent {
     this.form = new FormGroup({
       fields: new FormControl(JSON.stringify(this.fields))
     })
-    this.unsubcribe = this.form.valueChanges.subscribe((update) => {
-      console.log(update);
-      this.fields = JSON.parse(update.fields);
-    });
+   
   }
 
   onUpload(e) {
@@ -92,7 +90,13 @@ export class AppComponent {
     return this.fields;
   }
 
-  ngDistroy() {
-    this.unsubcribe();
+  onChange(value){
+    this.formOnChangeValue = value;
   }
+
+  onSubmit(value){
+    this.formValue = value;
+  }
+
+  
 }

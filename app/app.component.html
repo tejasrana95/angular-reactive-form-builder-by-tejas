@@ -7,10 +7,14 @@
     </div>
   </div>
 </div>
-
-<div class="col-sm-12">
- <div class="form-group" [formGroup]="form">
-    <label>JSON</label>
-    <textarea formControlName="fields" class="form-control" rows="3"></textarea>
-  </div>
-</div>
+<br/>
+<br/>
+<h3>On Submit Value</h3>
+<pre>
+{{formValue | json}}
+</pre>
+<hr/>
+<h3>On Change Value</h3>
+<pre>
+{{formOnChangeValue | json}}
+</pre>
